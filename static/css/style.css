@@ -1,0 +1,25 @@
+
+body {
+    background-color: #7D9B99;
+	margin:50px 0px; padding:0px;
+	text-align:center;
+}
+
+.page { 
+    margin: 2em auto;
+    border: 5px solid #55954E;
+    padding: 0.8em;
+    text-align: left;
+    color: #EFF4EE;
+}
+
+.footer {
+    padding: 0.6em;
+    text-align: center;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}

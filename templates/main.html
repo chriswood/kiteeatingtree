@@ -1,5 +1,17 @@
 
 {% extends "layout.html" %}
 {% block body %}
-<img src="{{ image }}">
+
+    {% if not logged_in %}
+not logged in
+    {% else %}
+      <p> logged in mane
+      <p>This is the main page. You can login here, blah blah blah.....</p>
+
+      <p>Maybe some pictures and stufff blah blah</p>
+
+      <p>Maybe this should be a paragraph..
+
+         blah blahblah</p>
+    {% endif %}
 {% endblock %}

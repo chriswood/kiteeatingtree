@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>The Kite Eating Tree</title>   
+    {% block head %}
+      <title>The Kite Eating Tree</title> 
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">  
+    {% endblock %}
   </head>
   <body>
-   
     <header>
       <div class="container">
-        <h1 class="logo">Kite Eating Tree</h1>
+        <img src="{{ header }}">
       </div>
     </header>
-     
-    <div class="container">
+    <div class="page center">
       {% block body %}
+
       {% endblock %}
     </div>
-     
+    <div class="footer center">
+      {% block footer -%}
+        {% include "footer.html" %}
+      {% endblock %}
+    </div>
   </body>
 </html>
