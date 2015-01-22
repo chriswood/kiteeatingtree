@@ -8,8 +8,9 @@
   </head>
   <body>
     <header>
-      <div class="container">
-        <img src="{{ header }}">
+      <div class="container center">
+        <div class='title'>{{ title }}</div>
+        <img src="{{ url_for('static', filename='images/header.png') }}">
       </div>
     </header>
     <div class="page center">

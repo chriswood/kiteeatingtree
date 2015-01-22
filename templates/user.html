@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+  <table class="main">
+    <tr>
+      <td class="post">
+        <table class='form'>
+          {% for field in form %}
+            <tr>
+              <th>{{ field.label }}</th>
+              <td>{{ field }}</td>
+            </tr>
+          {% endfor %}
+          <tr><td><input type=submit value=Register></td></tr>
+        </table>
+      </td>
+      <td class="logged">
+        <p>Logged in as username</p>
+        <button type="button">Sign Out</button>
+      </td>
+    </tr>
+  </table>
+{% endblock %}

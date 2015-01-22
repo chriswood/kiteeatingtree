@@ -8,31 +8,37 @@ body {
 table {
     border-spacing: 25px;
 }
-
+.container {
+    position: relative;
+}
+.title {
+    position: absolute;
+    color: #EFF4EE;
+    top: 50px;
+    right: 20px;
+    font-size: 33px;
+    z-index: 2;
+}
 .page { 
     margin: 2em auto;
     padding: 0.8em;
     text-align: left;
     color: #EFF4EE;
 }
-
 .footer {
     padding: 0.6em;
     text-align: center;
 }
-
 .center {
     margin-left: auto;
     margin-right: auto;
     width: 87%;
 }
-
 .logged {
     padding: 18px;
     border: 8px solid #FDE1CC;
     vertical-align: top;
 }
-
 .post {
 	padding:18px;
     width: 650px;
