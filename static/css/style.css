@@ -7,7 +7,7 @@ body {
 
 .page { 
     margin: 2em auto;
-    border: 5px solid #55954E;
+
     padding: 0.8em;
     text-align: left;
     color: #EFF4EE;
@@ -22,4 +22,19 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 80%;
+}
+
+.logged {
+    padding: 18px;
+    border: 8px solid #F8C8CB;
+    vertical-align: top;
+}
+
+.post {
+	padding:18px;
+    width: 700px;
+	border-top: 1px;
+	border-bottom:1px;
+	border-left: 1px;
+    border: 8px solid #F8C8CB;
 }

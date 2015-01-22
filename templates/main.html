@@ -1,17 +1,21 @@
-
 {% extends "layout.html" %}
 {% block body %}
+  <table>
+    <tr>
+      <td class="post">
+        <p> logged in mane
+          This is the main page. You can login here, blah blah blah.....
 
-    {% if not logged_in %}
-not logged in
-    {% else %}
-      <p> logged in mane
-      <p>This is the main page. You can login here, blah blah blah.....</p>
+          Maybe some pictures and stufff blah blah</p>
 
-      <p>Maybe some pictures and stufff blah blah</p>
+          Maybe this should be a paragraph..
 
-      <p>Maybe this should be a paragraph..
-
-         blah blahblah</p>
-    {% endif %}
+          blah blahblah</p>
+      </td>
+      <td class="logged">
+        <p>Logged in as username</p>
+        <button type="button">Sign Out</button>
+      </td>
+    </tr>
+  </table>
 {% endblock %}

@@ -13,9 +13,12 @@
       </div>
     </header>
     <div class="page center">
-      {% block body %}
-
-      {% endblock %}
+      {% if not logged_in %}
+        {% include "login.html" %}
+      {% else %}
+        {% block body %}
+        {% endblock %}
+      {% endif %}
     </div>
     <div class="footer center">
       {% block footer -%}
