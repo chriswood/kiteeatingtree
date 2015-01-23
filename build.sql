@@ -3,8 +3,8 @@ CREATE TABLE users (
     id INTEGER PRIMARY KEY NOT NULL,
     firstname TEXT,
     lastname TEXT,
-    username TEXT UNIQUE NOT NULL,
     email TEXT UNIQUE NOT NULL,
+    username TEXT UNIQUE NOT NULL,
     passhash TEXT UNIQUE NOT NULL,
     created DATE DEFAULT (datetime('now','localtime'))
 );

@@ -1,4 +1,4 @@
-from flask import Flask, request, url_for, redirect
+from flask import Flask, request, url_for, redirect, flash
 from flask import render_template
 from db_functions import db_wrapper
 from appforms import User
@@ -17,8 +17,9 @@ def register():
     if request.method == 'POST':
         if form.validate():
             user = User(request.values)
-            print("add user here!")
-            #flash('Thanks for registering')
+            db = db_wrapper()
+            db.add_user(user)
+            flash('Thanks for registering')
             return redirect(url_for('index'))
 
     return render_template('user.html', form=form,
