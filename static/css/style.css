@@ -47,3 +47,6 @@ table {
 	border-left: 1px;
     border: 7px solid #FDE1CC;
 }
+.field_errors {
+    color: red;
+}

@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, url_for, redirect
 from flask import render_template
 from db_functions import db_wrapper
 from appforms import User
@@ -14,15 +14,16 @@ def index():
 def register():
     logged_in=True
     form = User(request.form)
-    if request.method == 'POST' and form.validate():
-        user = User(form.username.data, form.email.data,
-                    form.passhash.data, form.firstname.data,
-                    form.lastname.data)
-        print("add user here!")
-        flash('Thanks for registering')
-        return redirect(url_for('index'))
+    if request.method == 'POST':
+        if form.validate():
+            user = User(request.values)
+            print("add user here!")
+            #flash('Thanks for registering')
+            return redirect(url_for('index'))
+
     return render_template('user.html', form=form,
-           logged_in=logged_in, title='create user')
+           logged_in=logged_in, title='create user',
+           posturl=url_for('register'))
 
 @app.route('/edit/<username>')
 def user(username):
