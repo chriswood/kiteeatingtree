@@ -28,9 +28,11 @@ def register():
 
 @app.route('/edit/<username>')
 def user(username):
-    # Create new user
-    # Edit user
     db = db_wrapper()
+    user = db.get_user(username)
     logged_in = True
     #return 'User %s' % username
     return render_template('user.html', user=username, logged_in=logged_in)
+
+
+
