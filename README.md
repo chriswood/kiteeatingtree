@@ -2,9 +2,8 @@ kiteeatingtree.org is a website I'm getting going to share
 things with family and friends and allow them to do the same.
 
 TODO:
-    Add users to db
-      create user
-      edit user info
+    X - create user
+    edit user info
     make user form error display not jump to top on error
     match login/pass
     X - add sqlite db
