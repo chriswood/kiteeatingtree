@@ -31,13 +31,12 @@ def register():
                        logged_in=logged_in, title=title,
                        posturl=url_for('register'), error=error,
                        showpass=True)
-
+            flash("You're ready to go.")
             return redirect(url_for('index'))
 
     return render_template('user.html', form=form,
            logged_in=logged_in, title=title,
-           posturl=url_for('register'), showpass=True,
-           form_action='/user/new')
+           posturl=url_for('register'), form_action='/user/new')
 
 @app.route('/edit/<username>', methods=['GET', 'POST'])
 def user(username):
@@ -49,17 +48,14 @@ def user(username):
         if form.validate():
             db = db_wrapper()
             newname = db.edit_user(form, username)
-
-            flash('Thanks for editing')
+            flash('Changes saved.')
             return redirect(url_for('user', username=newname))
-
     else:
         db = db_wrapper()
         user = db.get_user(username)
         form = UserBase()
         form.munge(user)
 
-    #return 'User %s' % username
     return render_template('user.html', form=form,
                             user=username, logged_in=logged_in,
                             title=title, form_action='/edit/' + username)

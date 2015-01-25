@@ -9,7 +9,7 @@ class UserBase(Form):
         validators.Length(min=4, max=75)
     ])
     username = TextField('Username', [
-        validators.InputRequired(message='userbase.'),
+        validators.InputRequired(),
         validators.Length(min=2, max=75)
     ])
 

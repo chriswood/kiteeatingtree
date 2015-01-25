@@ -5,7 +5,7 @@ TODO:
     X - create user
     add information section to front page
     X - fix where edit screwed up create
-    edit user info
+    X - edit user info
     make user form error display not jump to top on error
     match login/pass
     X - add sqlite db
@@ -21,4 +21,5 @@ TODO:
     Add login decorator
     Fix when to show logged in as
     add password edit feature
-    Add feedback on form submittal success for user/edit
+    X - Add feedback on form submittal success for user/edit
+

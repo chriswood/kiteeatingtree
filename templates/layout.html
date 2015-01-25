@@ -15,6 +15,15 @@
     </header>
     <div class="page center">
       {% if error %}<div class=error>{{ error }}</div>{% endif %}
+      <div class="flash">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              {{ message }}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </div>
       {% if not logged_in %}
         {% include "login.html" %}
       {% else %}
