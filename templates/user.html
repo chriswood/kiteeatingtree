@@ -5,14 +5,16 @@
       <td class="post">
         <table class='form'>
           {% from "_formhelpers.html" import render_field %}
-          <form method=post action="/user/new">
+          <form method=post action="{{ form_action }}">
             <dl>
               {{ render_field(form.firstname) }}
               {{ render_field(form.lastname) }}
               {{ render_field(form.username) }}
               {{ render_field(form.email) }}
-              {{ render_field(form.passhash) }}
-              {{ render_field(form.confirm) }}
+              {% if showpass %}
+                  {{ render_field(form.passhash) }}
+                  {{ render_field(form.confirm) }}
+              {% endif %}
             </dl>
             <input type=submit value=Register>
           </form>

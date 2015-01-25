@@ -18,4 +18,11 @@ class User(Form):
         validators.EqualTo('confirm', message='Passwords must match, jerk')
     ])
     confirm = PasswordField('Repeat Password (just like a REAL website!)')
+
+    def munge(self, obj):
+        self.firstname.data = obj['firstname']
+        self.lastname.data = obj['lastname']
+        self.email.data = obj['email']
+        self.username.data = obj['username']
+
     

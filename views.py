@@ -24,26 +24,45 @@ def register():
             db = db_wrapper()
             try:
                 db.add_user(user)
-            except IntegrityError:
-                error = "email already in use"
+            except IntegrityError, e:
+                error = 'That ' + e.message.rsplit('.')[-1] + \
+                        ' already exists.'
                 return render_template('user.html', form=form,
                        logged_in=logged_in, title=title,
-                       posturl=url_for('register'), error=error)
-            flash('Thanks for registering')
+                       posturl=url_for('register'), error=error,
+                       showpass=True)
+
             return redirect(url_for('index'))
 
     return render_template('user.html', form=form,
            logged_in=logged_in, title=title,
-           posturl=url_for('register'))
+           posturl=url_for('register'), showpass=True,
+           form_action='/user/new')
 
-@app.route('/edit/<username>')
+@app.route('/edit/<username>', methods=['GET', 'POST'])
 def user(username):
+    logged_in = True
+    title = 'edit user'
     db = db_wrapper()
     user = db.get_user(username)
-    logged_in = True
+    form = User()
+    form.munge(user)
+
+    if request.method == 'POST':
+        #if form.validate():
+        print("post")
+        user = User(request.values)
+        db = db_wrapper()
+
+        db.edit_user(user)
+
+        flash('Thanks for editing')
+        return redirect(url_for('user', username=username))
 
     #return 'User %s' % username
-    return render_template('user.html', user=username, logged_in=logged_in)
+    return render_template('user.html', form=form,
+                            user=username, logged_in=logged_in,
+                            title=title, form_action='/edit/' + username)
 
 
 
