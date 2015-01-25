@@ -9,9 +9,9 @@
             <dl>
               {{ render_field(form.firstname) }}
               {{ render_field(form.lastname) }}
-              {{ render_field(form.username) }}
               {{ render_field(form.email) }}
-              {% if showpass %}
+              {{ render_field(form.username) }}
+              {% if form.passhash %}
                   {{ render_field(form.passhash) }}
                   {{ render_field(form.confirm) }}
               {% endif %}

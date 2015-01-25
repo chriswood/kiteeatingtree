@@ -1,7 +1,7 @@
 from flask import Flask, request, url_for, redirect, flash
 from flask import render_template
 from db_functions import db_wrapper
-from appforms import User
+from appforms import UserBase, UserNew
 from sqlite3 import IntegrityError
 
 app = Flask(__name__.split('.')[0])
@@ -16,11 +16,11 @@ def register():
     logged_in=True
     error = ''
     title = 'create user'
-    form = User(request.form)
+    form = UserNew(request.form)
 
     if request.method == 'POST':
         if form.validate():
-            user = User(request.values)
+            user = UserNew(request.values)
             db = db_wrapper()
             try:
                 db.add_user(user)
@@ -43,21 +43,21 @@ def register():
 def user(username):
     logged_in = True
     title = 'edit user'
-    db = db_wrapper()
-    user = db.get_user(username)
-    form = User()
-    form.munge(user)
 
     if request.method == 'POST':
-        #if form.validate():
-        print("post")
-        user = User(request.values)
+        form = UserBase(request.values)
+        if form.validate():
+            db = db_wrapper()
+            newname = db.edit_user(form, username)
+
+            flash('Thanks for editing')
+            return redirect(url_for('user', username=newname))
+
+    else:
         db = db_wrapper()
-
-        db.edit_user(user)
-
-        flash('Thanks for editing')
-        return redirect(url_for('user', username=username))
+        user = db.get_user(username)
+        form = UserBase()
+        form.munge(user)
 
     #return 'User %s' % username
     return render_template('user.html', form=form,

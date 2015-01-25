@@ -17,9 +17,8 @@ TODO:
     display all posts
     display posts per user
     let user edit his posts
-
     implement picture sharing
     Add login decorator
     Fix when to show logged in as
     add password edit feature
-    
+    Add feedback on form submittal success for user/edit

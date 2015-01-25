@@ -14,26 +14,28 @@ class db_wrapper:
         self.c = self.conn_obj.cursor()
 
     def add_user(self, user): # hashlib crap
-        print(user)
-        print("***************")
         user.passhash = gen_hash(user.passhash.data)
         params = tuple([f.data for f in user if f.name is not 'confirm'])
-        sql = """INSERT INTO users (firstname, lastname, username,
-                 email, passhash) VALUES (?,?,?,?,?)"""
-        print("*****", sql,"***", params)
+        sql = """INSERT INTO users (firstname, lastname, email,
+                 username, passhash) VALUES (?,?,?,?,?)"""
         self.c.execute(sql, params)
         self.conn_obj.commit()
-        self.c.close()
 
     def get_user(self, username):
         params = (username,)
         sql = """SELECT * FROM users WHERE username = ?"""
         self.c.execute(sql, params)
-        self.c.close()
         return self.c.fetchone()
 
-    def edit_user(self, user):
+    def edit_user(self, user, oldname):
         ignore = ['passhash', 'confirm']
-        params = tuple([f.data for f in user if f.name not in ignore])
+        fields = [f.data for f in user if f.name not in ignore]
+        fields.append(oldname)
+        params = tuple(fields,)
         sql = """ UPDATE users SET firstname = ?, lastname = ?, email = ?,
-                  username = ? WHERE username"""
+                  username = ? WHERE username = ?"""
+        self.c.execute(sql, params)
+        self.conn_obj.commit()
+        return params[3]
+
+
