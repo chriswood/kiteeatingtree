@@ -1,8 +1,5 @@
 {% extends "layout.html" %}
 {% block body %}
-  <table class="main">
-    <tr>
-      <td class="post">
         <table class='form'>
           {% from "_formhelpers.html" import render_field %}
           <form method=post action="{{ form_action }}">
@@ -19,11 +16,4 @@
             <input type=submit value=Register>
           </form>
         </table>
-      </td>
-      <td class="logged">
-        <p>Logged in as username</p>
-        <button type="button">Sign Out</button>
-      </td>
-    </tr>
-  </table>
 {% endblock %}

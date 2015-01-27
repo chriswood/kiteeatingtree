@@ -3,18 +3,20 @@ from flask import render_template
 from db_functions import db_wrapper
 from appforms import UserBase, UserNew
 from sqlite3 import IntegrityError
-from utils import login_required
+from utils import login_required, is_active
 
 app = Flask(__name__.split('.')[0])
 
 @app.route('/')
-@login_required
 def index():
-#        if 'username' in session:
-#        return 'Logged in as %s' % escape(session['username'])
-#    return 'You are not logged in'
-    logged_in = False
-    return render_template("main.html", logged_in=logged_in)
+    if is_active():
+        username = session['username']
+        logged_in = True
+    else:
+        logged_in = False
+        username = None
+    return render_template("main.html", logged_in=logged_in,
+                            username=username)
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -30,13 +32,11 @@ def login():
 
 @app.route('/logout')
 def logout():
-    # remove the username from the session if it's there
     session.pop('username', None)
     return redirect(url_for('index'))
 
 @app.route('/user/new', methods=['GET', 'POST'])
 def register():
-    logged_in=True
     error = ''
     title = 'create user'
     form = UserNew(request.form)
@@ -51,21 +51,19 @@ def register():
                 error = 'That ' + e.message.rsplit('.')[-1] + \
                         ' already exists.'
                 return render_template('user.html', form=form,
-                       logged_in=logged_in, title=title,
-                       posturl=url_for('register'), error=error,
-                       showpass=True)
+                        title=title, posturl=url_for('register'),
+                        error=error)
             flash("You're ready to go.")
             return redirect(url_for('index'))
 
     return render_template('user.html', form=form,
-           logged_in=logged_in, title=title,
-           posturl=url_for('register'), form_action='/user/new')
+            title=title, posturl=url_for('register'),
+            form_action='/user/new')
 
 @app.route('/edit/<username>', methods=['GET', 'POST'])
+@login_required
 def user(username):
-    logged_in = True
     title = 'edit user'
-
     if request.method == 'POST':
         form = UserBase(request.values)
         if form.validate():
@@ -80,8 +78,9 @@ def user(username):
         form.munge(user)
 
     return render_template('user.html', form=form,
-                            user=username, logged_in=logged_in,
-                            title=title, form_action='/edit/' + username)
+                            user=username, logged_in=is_active(),
+                            title=title, form_action='/edit/' + username,
+                            username=session['username'])
 
 
 

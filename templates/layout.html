@@ -24,11 +24,23 @@
           {% endif %}
         {% endwith %}
       </div>
-      {% if not logged_in %}
+      {% if not (logged_in or (request.url_rule.endpoint == 'register')) %}
         {% include "login.html" %}
       {% else %}
-        {% block body %}
-        {% endblock %}
+        <table class="main">
+          <tr>
+            <td class="post">
+              {% block body %}
+              {% endblock %}
+            </td>
+            {% if logged_in %}
+            <td class="logged">
+              <p>Logged in as {{ username }}</p>
+              <a href='/logout'><button type="button">Sign Out</button></a>
+            </td>
+            {% endif %}
+          </tr>
+        </table>
       {% endif %}
     </div>
     <div class="footer center">
