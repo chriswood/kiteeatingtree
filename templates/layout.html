@@ -4,7 +4,9 @@
     {% block head %}
       <title>The Kite Eating Tree</title> 
       <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/jquery.growl.css') }}">
       <script type=text/javascript src="{{ url_for('static', filename='js/jquery-1.11.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/notifications.js') }}"></script>
     {% endblock %}
   </head>
   <body>
