@@ -25,7 +25,7 @@ def login():
     db = db_wrapper()
     if db.check_user(un, pw):
         session['username'] = un
-        flash("Login succesful.")
+        #flash("Login succesful.")
         return redirect(url_for('index'))
     else:
         return render_template("main.html", logged_in=False)
@@ -53,7 +53,7 @@ def register():
                 return render_template('user.html', form=form,
                         title=title, posturl=url_for('register'),
                         error=error)
-            flash("You're ready to go.")
+            #flash("You're ready to go.")
             return redirect(url_for('index'))
 
     return render_template('user.html', form=form,
@@ -69,7 +69,7 @@ def user(username):
         if form.validate():
             db = db_wrapper()
             newname = db.edit_user(form, username)
-            flash('Changes saved.')
+            #flash('Changes saved.')
             return redirect(url_for('user', username=newname))
     else:
         db = db_wrapper()
