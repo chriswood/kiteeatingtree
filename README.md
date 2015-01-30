@@ -2,7 +2,7 @@ kiteeatingtree.org is a website I'm getting going to share
 things with family and friends and allow them to do the same.
 
 TODO: (not prioritized, X = done)
-    Add growl type notifications
+    Add growl type notifications, or something
     add information section to front page
     make user form error display not jump to top on error
     implement posts
@@ -16,6 +16,7 @@ TODO: (not prioritized, X = done)
     add send a request to admin
     add email user/users feature
     write bash script to rsync with server and touch wsgi file
+    add admin section with view/edit users function
     X - Handle login/session
     X - add validated user to session
     X - check for validated user

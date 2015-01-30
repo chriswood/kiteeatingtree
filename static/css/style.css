@@ -1,12 +1,13 @@
 
 body {
+    margin-left: auto;
+    margin-right: auto;
     background-color: #7D9B99;
-	margin:50px 0px; padding:0px;
 	text-align:center;
+    width: 1024px;
 }
-
 table {
-    border-spacing: 25px;
+    border-spacing: 10px;
 }
 .container {
     position: relative;
@@ -20,8 +21,7 @@ table {
     z-index: 2;
 }
 .page { 
-    margin: 2em auto;
-    padding: 0.8em;
+    padding: 1em;
     text-align: left;
     color: #EFF4EE;
 }
@@ -32,21 +32,46 @@ table {
 .center {
     margin-left: auto;
     margin-right: auto;
-    width: 87%;
+    width: 98%;
 }
 .logged {
     padding: 18px;
-    border: 8px solid #FDE1CC;
+    border: 0px solid #FDE1CC;
     vertical-align: top;
 }
-.post {
-	padding:18px;
-    width: 650px;
+.postmain {
+	padding:2px;
+    width: 750px;
 	border-top: 1px;
 	border-bottom:1px;
 	border-left: 1px;
-    border: 7px solid #FDE1CC;
+    border: 0px;
 }
 .field_errors {
     color: red;
 }
+.posts_container, td {
+    padding:15px;
+    border: 5px black;
+}
+.avatar {
+    text-align: center;
+    vertical-align: top;
+    height: 175px;
+    width: 100px;
+}
+.message {
+   background-color: #FDE1CC;
+   color: #000000;
+   padding: 15px;
+}
+
+
+
+
+
+
+
+
+
+
