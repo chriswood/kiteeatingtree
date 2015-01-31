@@ -59,9 +59,10 @@ table {
     vertical-align: top;
     height: 175px;
     width: 100px;
+    background-image
 }
 .message {
-   background-color: #FDE1CC;
+   background-color: #B1C3C1; /* #5B8582;*/
    color: #000000;
    padding: 15px;
 }

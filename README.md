@@ -17,6 +17,9 @@ TODO: (not prioritized, X = done)
     add email user/users feature
     write bash script to rsync with server and touch wsgi file
     add admin section with view/edit users function
+    AVATARS!!!
+    round off post corners or something it's tacky
+
     X - Handle login/session
     X - add validated user to session
     X - check for validated user
@@ -34,6 +37,7 @@ TODO: (not prioritized, X = done)
         db file AND directory)
 
 Future ideas for app:
+    -Have posts colors random or rotate complementing values
     -Maybe use OpenId and Flask-Login for user session and authentication
     -Generalize everything, so that someone with little to no programming
         experience can create their family/group an instance of this
