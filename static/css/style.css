@@ -9,6 +9,9 @@ body {
 table {
     border-spacing: 10px;
 }
+a {
+    color: #EFF4EE;
+}
 .container {
     position: relative;
 }
@@ -21,7 +24,7 @@ table {
     z-index: 2;
 }
 .page { 
-    padding: 1em;
+    padding: 0em;
     text-align: left;
     color: #EFF4EE;
 }
@@ -50,21 +53,29 @@ table {
 .field_errors {
     color: red;
 }
-.posts_container, td {
+.posts_container {
     padding:15px;
-    border: 5px black;
 }
 .avatar {
     text-align: center;
     vertical-align: top;
     height: 175px;
     width: 100px;
-    background-image
 }
 .message {
    background-color: #B1C3C1; /* #5B8582;*/
    color: #000000;
    padding: 15px;
+}
+.menu {
+    text-align: center;
+    color: #EFF4EE;
+    font-size: 20px;
+    vertical-align: top;
+}
+.item {
+    display: inline;
+    text-decoration: underline;
 }
 
 

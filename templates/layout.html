@@ -20,6 +20,13 @@
       {% else %}
         <table class="center">
           <tr>
+            <td colspan=2>
+              <div class="menu">
+                <div class="item"><a href="/">home</a></div> | <div class="item"><a href="/post/create">create post</a></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
             <td class="postmain">
               {% block body %} 
               {% endblock %}

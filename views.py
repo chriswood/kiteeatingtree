@@ -89,3 +89,9 @@ def useredit(username):
                            title=title, form_action='/edit/' + username,
                            username=session['username'])
 
+@app.route('/post/create')
+def post_create():
+    return render_template('post.html')
+
+
+
