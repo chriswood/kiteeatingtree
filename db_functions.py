@@ -53,11 +53,24 @@ class DBwrapper(object):
         self.c.execute(sql, params)
         return self.c.fetchone()
 
-    def add_post(self, userid, message):
+    def get_user_id(self, username):
+        """ return userid based on username """
+        sql = """ SELECT id FROM users WHERE username = ? """
+        params = (username,)
+        self.c.execute(sql, params)
+        res = self.c.fetchone()
+        return(res['id'])
+
+    def add_post(self, post, username):
         """ insert post into db """
-        params = (userid, message)
-        sql = """ INSERT INTO users (firstname, lastname, email,
-                  username, passhash) VALUES (?,?,?,?,?) """
+        title = post.title.data
+        userid = self.get_user_id(username)
+        message = post.message.data
+        print("**************")
+        print(userid)
+        params = (userid, title, message)
+        sql = """ INSERT INTO posts (userid, title, message)
+                  VALUES (?,?,?) """
         self.c.execute(sql, params)
         self.conn_obj.commit()
 

@@ -9,3 +9,11 @@ CREATE TABLE users (
     created DATE DEFAULT (datetime('now','localtime'))
 );
 
+CREATE TABLE posts (
+    id INTEGER PRIMARY KEY,
+    userid INTEGER NOT NULL,
+    title TEXT,
+    message TEXT,
+    created DATE DEFAULT (datetime('now','localtime'))  
+);
+

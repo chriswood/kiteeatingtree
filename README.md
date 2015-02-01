@@ -19,6 +19,7 @@ TODO: (not prioritized, X = done)
     add admin section with view/edit users function
     AVATARS!!!
     round off post corners or something it's tacky
+    add "conversations" or replies to posts ot something
 
     X - Handle login/session
     X - add validated user to session
@@ -35,6 +36,7 @@ TODO: (not prioritized, X = done)
     X - edit user info
     X - Fix OBNOXIOUS db permission error (www-data must own
         db file AND directory)
+
 
 Future ideas for app:
     -Have posts colors random or rotate complementing values

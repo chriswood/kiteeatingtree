@@ -3,7 +3,7 @@
 from flask import Flask, request, url_for, redirect, session
 from flask import render_template
 from db_functions import DBwrapper
-from appforms import UserBase, UserNew
+from appforms import UserBase, UserNew, Post
 from sqlite3 import IntegrityError
 from utils import login_required, is_active
 
@@ -59,7 +59,6 @@ def register():
                                        title=title,
                                        posturl=url_for('register'),
                                        error=error)
-            #flash("You're ready to go.")
             return redirect(url_for('index'))
 
     return render_template('user.html', form=form,
@@ -76,7 +75,6 @@ def useredit(username):
         if form.validate():
             dbase = DBwrapper()
             newname = dbase.edit_user(form, username)
-            #flash('Changes saved.')
             return redirect(url_for('user', username=newname))
     else:
         dbase = DBwrapper()
@@ -89,9 +87,21 @@ def useredit(username):
                            title=title, form_action='/edit/' + username,
                            username=session['username'])
 
-@app.route('/post/create')
+@app.route('/post/create', methods=['GET', 'POST'])
 def post_create():
-    return render_template('post.html')
+    """ Create a new post and return to home page. """
+    form = Post()
+    username = session['username']
+    if request.method == 'POST':
+        form = Post(request.values)
+        if form.validate():
+            dbase = DBwrapper()
+            dbase.add_post(form, username)
+            return redirect(url_for('index'))
+
+    return render_template('post.html', logged_in=is_active(),
+                           title='new post', form=form)
+
 
 
 
