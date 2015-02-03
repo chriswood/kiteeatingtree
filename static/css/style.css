@@ -63,9 +63,11 @@ a {
     width: 100px;
 }
 .message {
-   background-color: #B1C3C1; /* #5B8582;*/
-   color: #000000;
-   padding: 15px;
+    vertical-align: top;
+    background-color: #B1C3C1; /* #5B8582;*/
+    color: #3B706C;
+    padding: 15px;
+    color: #000000;
 }
 .menu {
     text-align: center;
@@ -77,11 +79,12 @@ a {
     display: inline;
     text-decoration: underline;
 }
-
-
-
-
-
+.postheader {
+    /*background-color: #5B8582; /* #5B8582;*/
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
+}
 
 
 

@@ -11,15 +11,19 @@ app = Flask(__name__.split('.')[0])
 
 @app.route('/')
 def index():
-    """ home page """
+    """ Display posts and site information """
     if is_active():
         username = session['username']
         logged_in = True
+        dbase = DBwrapper()
+        posts = dbase.get_posts()
+        print(posts)
     else:
         logged_in = False
         username = None
+        posts = None
     return render_template("main.html", logged_in=logged_in,
-                           username=username)
+                           username=username, posts=posts)
 
 @app.route('/login', methods=['POST'])
 def login():

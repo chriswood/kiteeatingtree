@@ -14,6 +14,7 @@ CREATE TABLE posts (
     userid INTEGER NOT NULL,
     title TEXT,
     message TEXT,
-    created DATE DEFAULT (datetime('now','localtime'))  
+    created DATE DEFAULT (datetime('now','localtime')),
+    FOREIGN KEY(userid) REFERENCES users(id)
 );
 

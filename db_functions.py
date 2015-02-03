@@ -15,6 +15,9 @@ class DBwrapper(object):
         self.conn_obj = sqlite3.connect(db_path)
         self.conn_obj.row_factory = sqlite3.Row
         self.c = self.conn_obj.cursor()
+        # fk's are disbaled by default,
+        # and must be turned on for every connection
+        self.c.execute('PRAGMA foreign_keys = ON')
 
     def add_user(self, user): # TODO fix hashlib crap
         """ add user to db """
@@ -48,18 +51,32 @@ class DBwrapper(object):
     def check_user(self, user, password):
         """ return true if user exists """
         params = (user, password,)
-        sql = """ SELECT 1 FROM users
-                  WHERE username = ? AND passhash = ? """
+        sql = """SELECT 1 FROM users
+                 WHERE username = ? AND passhash = ?"""
         self.c.execute(sql, params)
         return self.c.fetchone()
 
     def get_user_id(self, username):
         """ return userid based on username """
-        sql = """ SELECT id FROM users WHERE username = ? """
+        sql = """SELECT id FROM users WHERE username = ?"""
         params = (username,)
         self.c.execute(sql, params)
         res = self.c.fetchone()
         return(res['id'])
+
+    def get_posts(self, limit=10, userid=None):
+        """ return given number of posts for all users or
+            specified user """
+        clause = ' WHERE p.userid = u.id '
+        if userid:
+            sql = """SELECT * FROM posts p, users u
+                     WHERE p.userid = u.id AND u.id = ? limit ?"""
+            params = (userid, limit)
+        else:
+            sql = """SELECT * FROM posts limit ?"""
+            params = (limit,)
+        self.c.execute(sql, params)
+        return self.c.fetchall()
 
     def add_post(self, post, username):
         """ insert post into db """

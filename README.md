@@ -2,11 +2,14 @@ kiteeatingtree.org is a website I'm getting going to share
 things with family and friends and allow them to do the same.
 
 TODO: (not prioritized, X = done)
+    take special feedback posts
+    Add /feedback view listing all feedback posts
     Add growl type notifications, or something
-    add information section to front page
+    add information section/"coming soon"
     make user form error display not jump to top on error
     implement posts
-    add posts to db
+    X - add posts to db
+    add delete button to post for post owner
     display all posts
     display posts per user
     let user edit his posts
@@ -20,6 +23,7 @@ TODO: (not prioritized, X = done)
     AVATARS!!!
     round off post corners or something it's tacky
     add "conversations" or replies to posts ot something
+    probably better add tests, even though it is "just" a website :)
 
     X - Handle login/session
     X - add validated user to session
@@ -109,7 +113,6 @@ conn_obj.row_factory = sqlite3.Row
   Order allow,deny
   Allow from all
   </Directory>
-
 </VirtualHost>
 
 
